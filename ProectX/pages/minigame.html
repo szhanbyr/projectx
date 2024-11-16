@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini-Game</title>
+  <style>
+    /* General body styles */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background-color: #1A2130;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Header / Navigation Bar */
+    header {
+      display: flex;
+      background-color: #1A2130;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: transparent;
+      padding: 20px;
+      z-index: 10;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    a {
+      margin: 0 20px;
+      color: white;
+      font-size: 18px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    a:hover {
+      color: #83B4FF;
+      transform: scale(1.1);
+    }
+
+    /* The container for the Spline viewer */
+    .spline-container {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    /* Game Controls (replaced Start button) */
+    .game-controls {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 18px;
+      z-index: 10;
+      text-align: center;
+    }
+
+    .game-status {
+      font-size: 20px;
+      color: white;
+      margin-top: 20px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <a href="home.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="#">Mini-games</a>
+  </header>
+
+  <!-- The container for the Spline viewer -->
+  <div class="spline-container">
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.42/build/spline-viewer.js"></script>
+    <spline-viewer url="https://prod.spline.design/fqZv7JDk-gZxuh6h/scene.splinecode"></spline-viewer>
+  </div>
+
+  <!-- Game Control Overlay -->
+  <div class="game-controls">
+    <div id="gameStatus" class="game-status">Explore the scene and interact with objects!</div>
+  </div>
+
+  <script>
+    // Game interaction example: Change background color on clicking the 3D scene
+    document.querySelector('spline-viewer').addEventListener('click', (event) => {
+      // Random color on click interaction
+      const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+      document.body.style.backgroundColor = randomColor;
+    });
+  </script>
+
+</body>
+</html>
